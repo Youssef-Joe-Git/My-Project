@@ -1,0 +1,70 @@
+<div class="card">
+  <div class="badge">HOT SALE</div>
+  <div class="tilt" routerLink="/product-details/{{item.id}}">
+    <div class="img">
+      <img src="{{ item.image }}" />
+    </div>
+  </div>
+  <div class="info">
+    <div class="top" routerLink="/product-details/{{item.id}}">
+      <h2 class="title">{{item.title}}</h2>
+      <p class="desc">{{item.description}}</p>
+    </div>
+    <div class="bottom d-flex justify-content-between align-items-center">
+      <div class="price">
+        <span class="new">${{item.price}}</span>
+      </div>
+      <button class="btn" *ngIf="!add" (click)="add = true">
+        <span>Add to Cart</span>
+        <svg
+          class="icon"
+          width="20"
+          height="30"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4" />
+          <line x1="3" y1="6" x2="21" y2="6" />
+          <path d="M16 10a4 4 0 01-8 0" />
+        </svg>
+      </button>
+      <div *ngIf="add" class="d-flex w-50">
+        <input
+          style="width: 100%"
+          type="number"
+          class="form-control"
+          [(ngModel)]="qty"
+        />
+        <button
+          class="btn"
+          style="width: fit-content"
+          *ngIf="add"
+          (click)="addToCart()"
+        >
+          add
+        </button>
+      </div>
+    </div>
+    <div class="meta">
+      <div class="rating">
+        {{item.rating?.rate}}
+        <svg
+          width="12"
+          height="12"
+          viewBox="0 0 24 24"
+          fill="#FFD700"
+          stroke="#FFD700"
+          stroke-width="0.5"
+        >
+          <polygon
+            points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+          />
+        </svg>
+        <span class="rcount">{{item.rating?.count}} Reviews</span>
+      </div>
+      <div class="stock">In Stock</div>
+    </div>
+  </div>
+</div>

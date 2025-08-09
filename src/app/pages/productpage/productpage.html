@@ -1,0 +1,25 @@
+<div class="col-md-3">
+  <h4>Categories:</h4>
+  <select
+    (change)="getFilterProducts($event)"
+    class="form-select"
+    aria-label="Default select example"
+  >
+    <option selected>All</option>
+    <option *ngFor="let item of categories">{{item}}</option>
+  </select>
+</div>
+<div class="row align-items-stretch" *ngIf="!loading">
+  <div class="col-md-3" *ngFor="let item of filteredProducts">
+    <app-product-card [item]="item" (data)="addToCart($event)">
+    </app-product-card>
+  </div>
+</div>
+<div
+
+  class="spinner-border text-primary text-center"
+  role="status"
+  *ngIf="loading"
+>
+  <span class="visually-hidden">Loading...</span>
+</div>

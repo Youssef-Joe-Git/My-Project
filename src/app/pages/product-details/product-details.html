@@ -1,0 +1,55 @@
+<div class="container mt-5 d-flex justify-content-center align-items-center">
+  <div *ngIf="!loading" class="container">
+    <div class="row">
+      <!-- Product Images -->
+      <div class="col-md-6 mb-4 d-flex justify-content-center">
+        <img
+          [src]="product.image"
+          alt="Product"
+          class="img-fluid rounded mb-3 product-image"
+          id="mainImage"
+        />
+      </div>
+
+      <!-- Product Details -->
+      <div class="col-md-6">
+        <h2 class="mb-3">{{product.title}}</h2>
+        <div class="mb-3">
+          <span class="h4 me-2">${{product.price}}</span>
+          <span class="text-muted"><s>$399.99</s></span>
+        </div>
+        <div class="mb-3">
+          <span class="ms-2"
+            >{{product.rating.rate}} ({{product.rating.count}} reviews)</span
+          >
+        </div>
+        <p class="mb-4">{{product.description}}</p>
+        <!-- <label for="quantity" class="form-label"
+        >Quantity: {{product.rating.count}}</label
+      > -->
+        <div class="mb-4 d-flex">
+          <input
+            type="number"
+            class="form-control me-2"
+            id="quantity"
+            value="1"
+            min="1"
+            style="width: 80px"
+            [(ngModel)]="qty"
+          />
+
+          <button class="btn btn-primary btn-lg" (click)="addToCart()">
+            Add to Cart
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="spinner-border text-primary text-center"
+    role="status"
+    *ngIf="loading"
+  >
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>
